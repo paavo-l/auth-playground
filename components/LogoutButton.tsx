@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
+import TransitionButton from "./TransitionButton";
 
 function LogoutButton() {
     const router = useRouter();
@@ -11,11 +12,7 @@ function LogoutButton() {
         router.refresh();
     };
 
-    return (
-        <button type="button" onClick={signOutGithub}>
-            Logout
-        </button>
-    );
+    return <TransitionButton label="Logout" onClick={signOutGithub} />;
 }
 
 export default LogoutButton;

@@ -2,5 +2,6 @@
   "recommendations": [
     "biomejs.biome",
     "alexcvzz.vscode-sqlite",
+    "bradlc.vscode-tailwindcss",
   ]
 }

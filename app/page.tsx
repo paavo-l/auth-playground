@@ -1,5 +1,6 @@
+import LoggedInCard from "@/components/LoggedInCard";
 import LoginButton from "@/components/LoginButton";
-import LogoutButton from "@/components/LogoutButton";
+
 import { getSession } from "@/lib/server-session";
 
 export default async function Home() {
@@ -8,13 +9,11 @@ export default async function Home() {
   return (
     <>
       <main>
-        {session?.user ?
-          <>
-            <p>Welcome, {session.user.name}!</p>
-            <LogoutButton />
-          </>
-          :
-          <LoginButton />}
+        {session?.user ? (
+          <LoggedInCard session={session} />
+        ) : (
+          <LoginButton />
+        )}
       </main>
       <footer></footer>
     </>
