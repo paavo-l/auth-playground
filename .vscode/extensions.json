@@ -1,5 +1,6 @@
 {
   "recommendations": [
     "biomejs.biome",
+    "alexcvzz.vscode-sqlite",
   ]
 }

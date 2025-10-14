@@ -1,12 +1,22 @@
-import Image from "next/image";
+import LoginButton from "@/components/LoginButton";
+import LogoutButton from "@/components/LogoutButton";
+import { getSession } from "@/lib/server-session";
 
-export default function Home() {
+export default async function Home() {
+  const session = await getSession();
+
   return (
     <>
-      <main >
+      <main>
+        {session?.user ?
+          <>
+            <p>Welcome, {session.user.name}!</p>
+            <LogoutButton />
+          </>
+          :
+          <LoginButton />}
       </main>
-      <footer>
-      </footer>
+      <footer></footer>
     </>
   );
 }
