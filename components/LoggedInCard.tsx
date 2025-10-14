@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { AuthSession } from "@/lib/server-session";
 import LogoutButton from "./LogoutButton";
+import { Badge } from "./ui/badge";
 import {
     Card,
     CardAction,
@@ -23,7 +24,10 @@ function LoggedInCard({ session }: Props) {
         <Card>
             <CardHeader>
                 <CardTitle>Welcome, {session.user.name}!</CardTitle>
-                <CardDescription>{session.user.email}</CardDescription>
+                <CardDescription className="flex items-center gap-2">
+                    {session.user.email}
+                    {session.user.emailVerified && <Badge variant="secondary">Verified</Badge>}
+                </CardDescription>
                 {session.user.image && (
                     <CardAction>
                         <Image
@@ -38,7 +42,7 @@ function LoggedInCard({ session }: Props) {
             <CardFooter>
                 <LogoutButton />
             </CardFooter>
-        </Card>
+        </Card >
     );
 }
 
