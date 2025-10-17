@@ -1,5 +1,6 @@
 import LoggedInCard from "@/components/LoggedInCard";
 import LoginButton from "@/components/LoginButton";
+import LoginWithPasskeyButton from "@/components/LoginWithPasskeyButton";
 
 import { getSession } from "@/lib/server-session";
 
@@ -8,14 +9,14 @@ export default async function Home() {
 
   return (
     <>
-      <main>
-        {session?.user ? (
-          <LoggedInCard session={session} />
-        ) : (
+      {session?.user ? (
+        <LoggedInCard session={session} />
+      ) : (
+        <div className="flex flex-col gap-2">
           <LoginButton />
-        )}
-      </main>
-      <footer></footer>
+          <LoginWithPasskeyButton />
+        </div>
+      )}
     </>
   );
 }

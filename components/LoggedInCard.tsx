@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { AuthSession } from "@/lib/server-session";
+import AddPasskeyButton from "./AddPasskeyButton";
 import LogoutButton from "./LogoutButton";
 import { Badge } from "./ui/badge";
 import {
@@ -20,13 +21,17 @@ function LoggedInCard({ session }: Props) {
         return null;
     }
 
+    console.log(session);
+
     return (
         <Card>
             <CardHeader>
                 <CardTitle>Welcome, {session.user.name}!</CardTitle>
                 <CardDescription className="flex items-center gap-2">
                     {session.user.email}
-                    {session.user.emailVerified && <Badge variant="secondary">Verified</Badge>}
+                    {session.user.emailVerified && (
+                        <Badge variant="secondary">Verified</Badge>
+                    )}
                 </CardDescription>
                 {session.user.image && (
                     <CardAction>
@@ -39,10 +44,11 @@ function LoggedInCard({ session }: Props) {
                     </CardAction>
                 )}
             </CardHeader>
-            <CardFooter>
+            <CardFooter className="mt-4 flex gap-2">
+                <AddPasskeyButton />
                 <LogoutButton />
             </CardFooter>
-        </Card >
+        </Card>
     );
 }
 

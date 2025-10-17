@@ -1,4 +1,5 @@
 import { betterAuth } from "better-auth";
+import { passkey } from "better-auth/plugins/passkey";
 import Database from "better-sqlite3";
 
 export const auth = betterAuth({
@@ -10,4 +11,8 @@ export const auth = betterAuth({
             clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
         },
     },
+
+    plugins: [
+        passkey(),
+    ],
 });

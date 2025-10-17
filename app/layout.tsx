@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "Auth Playground",
@@ -23,7 +24,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="max-w-md mx-auto p-4">
+          <main className="max-w-md mx-auto p-4">
             <h1 className=" text-4xl font-extrabold">
               Better Auth Sample App
             </h1>
@@ -31,7 +32,9 @@ export default function RootLayout({
               Playground for testing different auth methods
             </p>
             {children}
-          </div>
+
+            <Toaster position="top-right" />
+          </main>
         </ThemeProvider>
       </body>
     </html>
